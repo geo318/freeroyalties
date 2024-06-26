@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# FreeRoyalties Technical Interview
 
-## Getting Started
+This project is a Next.js application that meets the following requirements using React, TailwindCSS, and shadcn components, with a focus on utilizing generative AI tools for development.
 
-First, run the development server:
+## Task Requirements
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Create a Next.js app with TypeScript and TailwindCSS.
+- Use `shadcn/ui` for components and dark mode styles.
+- Implement a page with a modal that starts open.
+- The modal includes:
+  - A text field for the title.
+  - A button to add a question.
+  - Two empty "choices" that appear when the button is clicked.
+  - Each choice has a text field and a select field for type (dollar, number, string, boolean).
+  - A "Save" button that is enabled only when both the title and choices are filled.
+- Save the question title and choices as JSON in the page state when "Save" is clicked.
+- Dark mode should be enforced by default.
+- Ensure all state is managed in the page component.
+- Refactor logic using a custom hook for better readability.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Implementation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Set Up Project**
+   - Created a Next.js app with TypeScript and TailwindCSS.
+   - Configured TailwindCSS for dark mode.
+   - Installed shadcn components (`button`, `input`, `select`, `modal`).
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+2. **Component Structure**
+   - `ChoiceInput.tsx`: Component for individual choice input fields.
+   - `QuestionModal.tsx`: Modal component containing the title input, add question button, choice inputs, and save button.
+   - `index.tsx`: Main page component managing state and rendering the modal.
 
-## Learn More
+3. **Custom Hook**
+   - `useQuestionForm.ts`: Custom hook to manage form state and logic, enhancing readability and separation of concerns.
 
-To learn more about Next.js, take a look at the following resources:
+4. **Dark Mode Enforcement**
+   - Configured dark mode in TailwindCSS.
+   - Applied dark mode classes to all relevant components.
+   - Ensured dark mode is enforced by default in `_document.tsx`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. **State Management**
+   - Managed all state in the `index.tsx` page component.
+   - Ensured the "Save" button is enabled only when the title and all choice fields are filled.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Files Created/Modified
 
-## Deploy on Vercel
+- `pages/_document.tsx`: Enforces dark mode by default.
+- `components/ChoiceInput.tsx`: Component for choice input fields.
+- `components/QuestionModal.tsx`: Modal component.
+- `hooks/useQuestionForm.ts`: Custom hook for managing question form state.
+- `pages/index.tsx`: Main page component.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Usage
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Clone the repository.
+2. Install dependencies: `npm install`
+3. Run the development server: `npm run dev`
+
+## Summary
+
+This project demonstrates the use of Next.js, TailwindCSS, and shadcn components to build a dynamic form within a modal, utilizing a custom hook for state management and ensuring dark mode by default.
